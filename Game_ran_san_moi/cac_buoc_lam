@@ -1,0 +1,53 @@
+===LẬP TRÌNH GAME RẮN SĂN MỒI=====
+----------------------------------
+4 level đồ họa cơ bản
+lv1: di chuyển vật thể
+lv2: di chuyển vật thể có biên
+    xóa dữ liệu cũ
+    c1 : system("cls"); // nhưng làm nháy vật thể tĩnh
+    c2 : backspace
+lv3: di chuyển vật thể có biên + kèm theo phím
+lv4: di chuyển vật thể 4 hướng có biên + kèm theo phím
+----------------------------------
+bắt đầu dô làm game:
+b1 : vẽ tường, tạo hình rắn và xử lý rắn di chuyển
+    vẽ tường :
+    trên: y=1  , x=10, x++ , x=100
+    dưới: y=26 , x=10, x++ , x=100
+    trái: x=10 , y=1 , y++ , y=26
+    phải: x=100, y=1 , y++ , y=26
+b2 : tạo hình rắn
+    làm hai hàm lưu giá trị tọa độ x , y
+    toadox[]
+    chỉ số:  0   1   2   3
+    giá trị: x0  x1  x2  x3
+    toadoY[]
+    chỉ số:  0   1   2   3
+    giá trị: Y0  Y1  Y2  Y3
+    cho đầu con rắn ở (50,13)
+b3: cho rắn chạy
+    chỉ số:  0     1   2   3
+    giá trị: xmới  x0  x1  x2
+    toadoY[]
+    chỉ số:  0     1   2   3
+    giá trị: ymới  y0  y1  y2
+
+    các bước cho nó chạy:
+    b1:thêm tọa độ mới vào đầu mảng
+    b2:xóa tọa độ cuối mảng
+    b3:vẽ rắn
+    => xóa dữ liệu cũ
+b5: game over
+    - Rắn chạm tường
+    - Rắn tự cắn đuôi
+b6: tạo quả
+    srand(time(NULL));
+    rand()%(b-a+1)+a; random một số từ [a,b];
+    phạm vi quả: x (11,99)
+                 y (2,25)
+    xqua = rand()%(99-11+1)+11;
+    yqua = rand()%(25-2+1)+2;
+    * kiểm tra rắn đè lên quả.
+b7: xử lý rắn ăn quả
+    b1: ktra đầu rắn trùng quả
+    khi ăn rắn sẽ tăng đuôi lên

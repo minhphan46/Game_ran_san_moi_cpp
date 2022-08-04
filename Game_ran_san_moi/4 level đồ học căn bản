@@ -1,0 +1,55 @@
+#include <iostream>
+#include "ran_san_moi.h"
+using namespace std;
+
+int main()
+{
+    int i= 1;//biến màu
+    int x = 10, y = 0;
+    int xcu = x, ycu = y; // tọa độ cũ
+    int check = 0;
+    // 0 là cham vào biên trên - đi xuống
+    // 1 là chạm vào biên dưới - đi lên
+    // 2 là chạm vào biên phải - đi qua trái
+    // 3 là chạm vào biên trái - đi qua phải
+    while( true)
+    {
+        gotoXY( xcu, ycu);
+        cout << "           ";
+        gotoXY(x, y);
+        cout << "HELLO WORLD";
+        xcu = x; ycu = y;
+        SetColor(i);
+        i++;
+        if( i == 15) i = 1;
+        // điều khiển
+        if(_kbhit()){
+            char kitu = _getch();
+            if( kitu == -32){
+                kitu = _getch();
+                if( kitu == 72) check = 1;//di len
+                if( kitu == 80) check = 0;//di xuong
+                if( kitu == 75) check = 2;//qua trai
+                if( kitu == 77) check = 3;//qua phai
+            }
+            if( kitu == 'w') check = 1;
+            if( kitu == 's') check = 0;
+            if( kitu == 'd') check = 3;
+            if( kitu == 'a') check = 2;
+        }
+        // kiểm tra hướng
+        if( check == 0) y++;
+        if( check == 1) y--;
+        if( check == 2) x-=2;
+        if( check == 3) x+=2;
+        // kiểm tra biên
+        if( y == 0 ) check = 0;
+        if( y == 29) check = 1;
+        if( x == 0 ) check = 3;
+        if( x >= 107)check = 2;
+        Sleep(100);
+    }
+    _getch();
+    return 0;
+}
+

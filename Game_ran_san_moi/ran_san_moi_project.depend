@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1641581373 source:c:\ran_san_moi_project\main.cpp
+	<iostream>
+	"ran_san_moi.h"
+
+1641564577 c:\ran_san_moi_project\ran_san_moi.h
+	<stdio.h>
+	<conio.h>
+	<ctime>
+	"windows.h"
+
